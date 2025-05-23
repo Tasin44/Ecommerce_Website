@@ -10,41 +10,32 @@ This Django-based e-commerce platform provides a complete online shopping experi
 * Account activation via email links
 * Custom user model with additional fields
 
+### Product Management
 
-Product Management
+* Product catalog with categories
+* Product search and filtering
+* Product details with images
+* Product reviews and ratings
 
-Product catalog with categories
-Product search and filtering
-Product details with images
-Product reviews and ratings
-Average rating calculation
-Related products suggestions
+### Shopping Experience
 
-Shopping Experience
+* Shopping cart functionality
+* Add/remove/update cart items
+* Session-based cart for guests
+* User-specific cart for authenticated users
+* Cart persistence across sessions
 
-Shopping cart functionality
-Add/remove/update cart items
-Session-based cart for guests
-User-specific cart for authenticated users
-Cart persistence across sessions
+### Order Management
 
-Order Management
+* Order creation and processing
+* Order history for users
+* Order status tracking
+* Order confirmation system
+* Detailed order information
 
-Order creation and processing
-Order history for users
-Order status tracking
-Order confirmation system
-Detailed order information
+### Review System
 
-Wishlist System
-
-Add products to wishlist
-Remove from wishlist
-Personal wishlist management
-
-Review System
-
-Product rating (1-5 stars)
-Written reviews
-One review per user per product
-Review editing capability
+* Product rating (1-5 stars)
+* Written reviews
+* One review per user per product
+* Review editing capability
