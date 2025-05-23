@@ -71,9 +71,9 @@ This Django-based e-commerce platform provides a complete online shopping experi
 
 Follow these steps to set up the project on your local machine.
 Prerequisites (Install):
-    Python 3.x
-    Django 3.x
-    A SQL database (e.g., SQLite, PostgreSQL)
-    Git
-    pip (Python package manager)
+* Python 3.x
+* Django 3.x
+* A SQL database (e.g., SQLite, PostgreSQL)
+* Git
+* pip (Python package manager)
 
