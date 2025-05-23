@@ -191,3 +191,14 @@ django-ecommerce/
 
 ![orderconfirmation](https://github.com/user-attachments/assets/ebc9f8e6-c07e-4149-8d4d-1c9f39674b8b)
 
+
+## 🤝 Contributing
+
+* Fork the repository
+* Create a feature branch (git checkout -b feature/AmazingFeature)
+* Commit your changes (git commit -m 'Add some AmazingFeature')
+* Push to the branch (git push origin feature/AmazingFeature)
+* Open a Pull Request
+
+
+
