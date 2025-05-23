@@ -94,22 +94,68 @@ venv\Scripts\activate
 source venv/bin/activate
 
 ```
+3. Install dependencies
+```
+pip install -r requirements.txt
+```
+4. Database Setup
+Create a PostgreSQL database and update your settings.py:
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_db_name',
+        'USER': 'your_db_user',
+        'PASSWORD': 'your_db_password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+5. Apply migrations:
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+6. Create a superuser:
+```
+python manage.py createsuperuser
+```
+7. Run the development server
+```
+python manage.py runserver
+```
+The application will be available at http://127.0.0.1:8000/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 📁 Project Structure:
+```
+django-ecommerce/
+├── authapp/                 # User authentication app
+│   ├── models.py           # Custom user model
+│   ├── views.py            # Auth views (login, signup, etc.)
+│   ├── forms.py            # Authentication forms
+│   └── admin.py            # User admin configuration
+|   └── templates            
+├── storeapp/               # Main store app
+│   ├── models.py           # Product, Category, Review models
+│   ├── views.py            # Product listing and detail views
+│   ├── forms.py            # Review forms
+│   └── admin.py            # Store admin configuration
+├── cartapp/                # Shopping cart app
+│   ├── models.py           # Cart and CartItem models
+│   ├── views.py            # Cart management views
+│   └── utils.py            # Cart utility functions
+|   └── templates 
+├── ordersapp/              # Order management app
+│   ├── models.py           # Order and OrderItem models
+│   ├── views.py            # Order processing views
+│   ├── forms.py            # Order forms
+│   └── admin.py            # Order admin configuration
+|   └── templates 
+├── templates/              # HTML templates
+├── static/                 # Static files (CSS, JS, images)
+├── media/                  # User uploaded files
+├── manage.py              # Django management script
+├── requirements.txt       # Python dependencies
+└── README.md             # Project documentation
+```
