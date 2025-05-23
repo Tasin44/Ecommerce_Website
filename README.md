@@ -112,8 +112,8 @@ DATABASES = {
     }
 }
 ```
-5. 🔧 Configuration:
-Email Configuration
+5. 🔧 Email Configuration:
+
 Update your settings.py for email functionality:
 ```
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
