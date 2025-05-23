@@ -112,16 +112,33 @@ DATABASES = {
     }
 }
 ```
-5. Apply migrations:
+5. 🔧 Configuration:
+Email Configuration
+Update your settings.py for email functionality:
+```
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'
+DEFAULT_FROM_EMAIL = 'your_email@gmail.com'
+```
+6. Media Files Configuration:
+```
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+```
+7. Apply migrations:
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
-6. Create a superuser:
+8. Create a superuser:
 ```
 python manage.py createsuperuser
 ```
-7. Run the development server
+9. Run the development server
 ```
 python manage.py runserver
 ```
