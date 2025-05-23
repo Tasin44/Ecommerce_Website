@@ -1,0 +1,96 @@
+{% extends 'main.html' %}
+
+{% block title %}Order #{{ order.id }} - ShopEase{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6 border-b">
+            <h1 class="text-lg font-medium leading-6 text-gray-900">
+                Order #{{ order.id }}
+            </h1>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                Placed on {{ order.created_at|date:"F j, Y" }}
+            </p>
+        </div>
+        
+        <div class="border-b">
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Status</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">
+                    <span class="px-3 py-1 rounded-full text-sm 
+                        {% if order.status == 'P' %}bg-blue-100 text-blue-800
+                        {% elif order.status == 'PR' %}bg-yellow-100 text-yellow-800
+                        {% elif order.status == 'S' %}bg-purple-100 text-purple-800
+                        {% elif order.status == 'D' %}bg-green-100 text-green-800
+                        {% else %}bg-red-100 text-red-800{% endif %}">
+                        {{ order.get_status_display }}
+                    </span>
+                </dd>
+            </div>
+            {% if order.tracking_number %}
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Tracking Number</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">
+                    {{ order.tracking_number }}
+                </dd>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="px-4 py-5 sm:px-6">
+            <h2 class="text-lg font-medium mb-4">Order Items</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {% for item in order_items %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        {% if item.product.image %}
+                                        <img class="h-10 w-10 rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                        {% else %}
+                                        <div class="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
+                                            <i class="fas fa-image text-gray-400"></i>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">{{ item.product.name }}</div>
+                                        <div class="text-sm text-gray-500">{{ item.product.category.name }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${{ item.price }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ item.quantity }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${{ item.get_cost }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="px-6 py-4 text-right font-medium">Subtotal</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${{ order.get_total_cost }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        
+        <div class="px-4 py-4 bg-gray-50 text-right sm:px-6">
+            <a href="{% url 'ordersapp:order_history' %}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Back to Order History
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

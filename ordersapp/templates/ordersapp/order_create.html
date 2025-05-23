@@ -1,0 +1,151 @@
+
+{% extends "main.html" %}
+{% block title %}Checkout - ShopEase{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header Section -->
+        <div class="bg-indigo-600 px-6 py-4">
+            <h2 class="text-2xl font-bold text-white">Checkout</h2>
+            <p class="text-indigo-100">Complete your purchase</p>
+        </div>
+
+        <!-- Form Section -->
+        <div class="p-6 md:p-8">
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Customer Information -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b pb-2">
+                        <i class="fas fa-user mr-2 text-indigo-600"></i>
+                        Customer Information
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div>
+                            <label for="{{ form.full_name.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Full Name
+                            </label>
+                            {{ form.full_name }}
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div>
+                            <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Email Address
+                            </label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b pb-2">
+                        <i class="fas fa-truck mr-2 text-indigo-600"></i>
+                        Shipping Address
+                    </h3>
+                    
+                    <div>
+                        <label for="{{ form.address.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                            Street Address
+                        </label>
+                        {{ form.address }}
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b pb-2">
+                        <i class="fas fa-credit-card mr-2 text-indigo-600"></i>
+                        Payment Method
+                    </h3>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input id="credit-card" name="payment" type="radio" checked class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                            <label for="credit-card" class="ml-2 block text-sm font-medium text-gray-700">
+                                Credit Card
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="paypal" name="payment" type="radio" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                            <label for="paypal" class="ml-2 block text-sm font-medium text-gray-700">
+                                PayPal
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b pb-2">
+                        <i class="fas fa-receipt mr-2 text-indigo-600"></i>
+                        Order Summary
+                    </h3>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span class="font-medium">${{ cart.get_total_price }}</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-600">Shipping</span>
+                            <span class="font-medium">Free</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-gray-900 font-bold">Total</span>
+                            <span class="text-indigo-600 font-bold">${{ cart.get_total_price }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                        <i class="fas fa-lock mr-2"></i>
+                        Place Order Securely
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Form input styling */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        transition: all 0.2s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+        border-color: #818cf8;
+        box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+        outline: none;
+    }
+    
+    /* Error message styling */
+    .errorlist {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+    
+    /* Radio button styling */
+    input[type="radio"]:checked {
+        background-color: #6366f1;
+    }
+</style>
+{% endblock %}

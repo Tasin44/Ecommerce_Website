@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>{% block title %}ShopEase{% endblock %}</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .star-rating {
+            color: #fbbf24;
+        }
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <header class="bg-white shadow-sm">
+        {% include "nav.html" %}
+    </header>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        {% include 'messages.html' %}
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">ShopEase</h3>
+                    <p>Your one-stop shop for all your needs.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="{% url 'storeapp:product_list' %}" class="hover:text-indigo-300">Products</a></li>
+                            <li><a href="#" class="hover:text-indigo-300">About Us</a></li>
+                            <li><a href="#" class="hover:text-indigo-300">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-indigo-300">Shipping Policy</a></li>
+                            <li><a href="#" class="hover:text-indigo-300">Returns & Refunds</a></li>
+                            <li><a href="#" class="hover:text-indigo-300">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2024 ShopEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% block title %}Order History - ShopEase{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-6">Your Order History</h1>
+    
+    {% if orders %}
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="divide-y divide-gray-200">
+            {% for order in orders %}
+            <div class="p-4 hover:bg-gray-50">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-medium text-lg">Order #{{ order.id }}</h3>
+                        <p class="text-gray-600 text-sm">
+                            Placed on {{ order.created_at|date:"F j, Y" }}
+                        </p>
+                        <div class="mt-2">
+                            <span class="px-3 py-1 rounded-full text-sm 
+                                {% if order.status == 'P' %}bg-blue-100 text-blue-800
+                                {% elif order.status == 'PR' %}bg-yellow-100 text-yellow-800
+                                {% elif order.status == 'S' %}bg-purple-100 text-purple-800
+                                {% elif order.status == 'D' %}bg-green-100 text-green-800
+                                {% else %}bg-red-100 text-red-800{% endif %}">
+                                {{ order.get_status_display }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold">${{ order.get_total_cost }}</p>
+                        <a href="{% url 'ordersapp:order_detail' order.id %}" 
+                           class="text-indigo-600 hover:text-indigo-800 text-sm">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="bg-white shadow rounded-lg p-8 text-center">
+        <i class="fas fa-box-open text-5xl text-gray-300 mb-4"></i>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No orders yet</h3>
+        <p class="text-gray-600 mb-6">Your order history will appear here once you make purchases.</p>
+        <a href="{% url 'storeapp:product_list' %}" 
+           class="inline-block bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
+            Start Shopping
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
