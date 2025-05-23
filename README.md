@@ -159,3 +159,19 @@ django-ecommerce/
 ├── requirements.txt       # Python dependencies
 └── README.md             # Project documentation
 ```
+
+## Project Flow and Frontend View:
+
+### Signup
+
+![signup](https://github.com/user-attachments/assets/1571ea00-88ab-436f-8e8f-ed4263850874)
+
+
+
+
+
+
+
+
+
+
