@@ -167,11 +167,27 @@ django-ecommerce/
 ![signup](https://github.com/user-attachments/assets/1571ea00-88ab-436f-8e8f-ed4263850874)
 
 
+### Login
 
+![login1](https://github.com/user-attachments/assets/a7d16cfe-57e6-4c1d-9231-0a642ce84604)
 
+### Overview of the shoping site
 
+![overview](https://github.com/user-attachments/assets/8e5dd66a-48f1-4ed6-b683-202632dc1d7b)
 
+### Add to cart and giving review: 
 
+![Add to cart and giving review](https://github.com/user-attachments/assets/9d906490-ce28-4e7f-a720-614b9351ae5e)
 
+### My Cart
 
+![mycart1](https://github.com/user-attachments/assets/f1d167e6-2c6d-467f-85ec-71061829bb39)
+
+### Checkout Page
+
+![checkout2](https://github.com/user-attachments/assets/e0b761d8-5751-4503-a50a-71e266205942)
+
+### Order Confirmation 
+
+![orderconfirmation](https://github.com/user-attachments/assets/ebc9f8e6-c07e-4149-8d4d-1c9f39674b8b)
 
