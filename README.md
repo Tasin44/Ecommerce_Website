@@ -67,7 +67,8 @@ This Django-based e-commerce platform provides a complete online shopping experi
 * Django Authentication System
 * Django Messages Framework
 
-## Setup Instructions to Run
+
+## 📋Setup Instructions to Run
 
 Follow these steps to set up the project on your local machine.
 Prerequisites (Install):
@@ -76,4 +77,31 @@ Prerequisites (Install):
 * A SQL database (e.g., SQLite, PostgreSQL)
 * Git
 * pip (Python package manager)
+
+  
+## 🚀 Run
+1. Clone the repository
+```
+git clone https://github.com/Tasin44/Ecommerce_Website.git
+cd django-ecommerce
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
