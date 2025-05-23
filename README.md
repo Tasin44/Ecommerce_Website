@@ -85,7 +85,15 @@ Prerequisites (Install):
 git clone https://github.com/Tasin44/Ecommerce_Website.git
 cd django-ecommerce
 ```
+2. Create and activate a virtual environment
+```
+python -m venv venv
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
 
+```
 
 
 
